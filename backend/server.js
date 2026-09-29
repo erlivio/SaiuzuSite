@@ -66,3 +66,14 @@ app.post('/matches', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Serveur Saiuzu lancé sur http://localhost:${PORT}`);
 });
+
+// Route d'accueil
+app.get('/', (req, res) => {
+  res.send('SaiuzuSite is live!');
+});
+
+// Démarrage du serveur
+app.listen(PORT, () => {
+  console.log(`Serveur démarré sur le port ${PORT}`);
+});
+
