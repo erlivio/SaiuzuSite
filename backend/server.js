@@ -2,6 +2,7 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const cors = require('cors');
+const path = require('path');
 
 // Initialisation du serveur
 const app = express();
@@ -67,9 +68,12 @@ app.listen(PORT, () => {
   console.log(`Serveur Saiuzu lancé sur http://localhost:${PORT}`);
 });
 
-// Route d'accueil
+// Servir les fichiers statiques du frontend
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+
 app.get('/', (req, res) => {
-  res.send('SaiuzuSite is live!');
+  res.sendFile(path.join(__dirname, '../frontend/index.html'));
 });
 
 // Démarrage du serveur
